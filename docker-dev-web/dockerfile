@@ -1,0 +1,11 @@
+FROM node:14-alpine
+
+RUN apk update && apk upgrade && \
+    npm i -g serve && \
+    mkdir /opt/app
+
+COPY . /opt/app
+
+EXPOSE 5000
+WORKDIR /opt/app
+CMD serve -l 5000
