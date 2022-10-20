@@ -35,3 +35,44 @@ Otwarcie power shella:
   ```
 * Step 5 - Install your Linux distribution of choice
   * Instalacja wybranej dystrybucji Linux`a. [(Mój wybór)](https://www.microsoft.com/store/apps/9N9TNGVNDL3Q)
+### Komendy
+#### Uruchomienie
+```
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+```
+```
+docker run [docker_image]
+```
+Przykład: 
+```
+docker run hello-world
+```
+#### Wyświetlanie listy kontenerów
+```
+docker ps -a
+```
+#### Usuwanie wybranego obrazu
+```
+docker rmi [ID/Name]
+```
+#### Usuwanie wszystkich nieużywanych obrazów
+```
+docker rmi $(docker images -q)
+```
+#### Upublicznianie portów
+```
+-p [host_ip]:[host_port]:[container_port]
+```
+Przykład:
+```
+docker run -p 8080:80 nginx
+```
+#### Nadawanie nazw kontenerom
+```
+docker run --name [container_name] [docker_image]
+```
+Przykład:
+```
+docker run --name my-nginx -p 8080:80 nginx
+docker run --name my-db -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 mysql:8
+```
