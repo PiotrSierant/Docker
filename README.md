@@ -6,6 +6,8 @@
 * [Pobierz Docker](https://docs.docker.com/get-docker/)
 * [Instalacja Docker'a](https://www.youtube.com/watch?v=ssTS6q_6eSg)
 * [Linux w Windowsie? - Instalacja Linuksa z wykorzystaniem WSL-a](https://www.youtube.com/watch?v=fyn3Whhlt08)
+* [Error response from daemon - windows timeout](https://stackoverflow.com/questions/59360629/docker-windows-timeout)
+* [Error response from daemon - windows timeout](https://github.com/docker/for-win/issues/5386)
 
 ### Instalacja
 * [Instalacja Windows](https://docs.docker.com/desktop/install/windows-install/)
@@ -36,6 +38,10 @@ Otwarcie power shella:
 * Step 5 - Install your Linux distribution of choice
   * Instalacja wybranej dystrybucji Linux`a. [(Mój wybór)](https://www.microsoft.com/store/apps/9N9TNGVNDL3Q)
 ### Komendy
+#### Login
+```
+docker login
+```
 #### Uruchomienie
 ```
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
@@ -75,4 +81,36 @@ Przykład:
 ```
 docker run --name my-nginx -p 8080:80 nginx
 docker run --name my-db -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 mysql:8
+```
+#### Zatrzymywanie kontenera
+```
+docker stop [container_name / container_id]
+```
+#### Uruchamianie zatrzymanego kontenera
+```
+docker start [container_name / container_id]
+```
+#### Usuwanie kontenera
+```
+docker run --rm [docker_image]
+```
+#### Usuwanie wszystkich zatrzymanych kontenerów
+```
+docker rm $(docker ps -a -q)
+```
+#### Wymuszenie usunięcia wszystkich kontenerów - również działających
+```
+docker rm $(docker ps -a -q) --force
+```
+#### Uruchamianie kontenera w tle - Detached
+```
+docker run -d [docker_image]
+```
+#### Podgląd logów kontenera
+```
+docker logs [container_name / container_id]
+```
+#### Na bieżąco odświeżany log:
+```
+watch docker logs my-ngix
 ```
