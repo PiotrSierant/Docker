@@ -8,6 +8,7 @@
 * [Linux w Windowsie? - Instalacja Linuksa z wykorzystaniem WSL-a](https://www.youtube.com/watch?v=fyn3Whhlt08)
 * [Error response from daemon - windows timeout](https://stackoverflow.com/questions/59360629/docker-windows-timeout)
 * [Error response from daemon - windows timeout](https://github.com/docker/for-win/issues/5386)
+* [DockerCLI](https://www.youtube.com/watch?v=DKJ-GBufAoM)
 
 ### Instalacja
 * [Instalacja Windows](https://docs.docker.com/desktop/install/windows-install/)
@@ -113,4 +114,37 @@ docker logs [container_name / container_id]
 #### Na bieżąco odświeżany log:
 ```
 watch docker logs my-ngix
+```
+#### Uruchamianie kontenera w trybie interaktywnym
+```
+docker run -it [docker_image] /bin/bash
+```
+Przykład: 
+```
+docker run -it --name my-debian debian:9 bash
+```
+
+_Wyjście z kontenera
+Jeżeli mamy uruchomiony kontener w trybie interaktywnym i jesteśmy w jego terminalu, to aby z niego wyjść należy nacisnąć ctrl+D_
+
+#### Wykonywanie poleceń wewnątrz kontenera
+```
+docker exec [container_name] [command]
+```
+Przykład:
+```
+docker exec -it my-debian bash
+```
+#### Przechowywanie danych
+Start kontenera z mysql
+```
+docker run --name my-db -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 mysql:8
+```
+Składnia parametru do montowania volumenu
+```
+-v [/host/volume/location]:[/container/storage]
+```
+Przykład: 
+```
+docker run -d -it --name my-db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -v /home/dl/db:/var/lib/mysql mysql:8
 ```
