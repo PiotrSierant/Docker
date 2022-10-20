@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  java-app:
+    image: registry.gitlab.com/devnotes.it/java/springbootshoopinglist-demo:v1
+    ports:
+      - "80:8080"
